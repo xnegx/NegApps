@@ -1,6 +1,4 @@
-#Some setup information :).
+#Meu Primeiro projeto em java independente.
 
-##Spring JPA Setup
-You need to change the **application.properties** and configure the login, password and url of your database. 
-  	
-
+##Neg Apps
+Em breve uma descrição....
