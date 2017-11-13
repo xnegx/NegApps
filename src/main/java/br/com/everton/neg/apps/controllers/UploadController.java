@@ -9,7 +9,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.everton.neg.apps.models.Header;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,7 +21,7 @@ import java.nio.file.Paths;
 public class UploadController {
 
     //Save the uploaded file to this folder
-    private static String UPLOADED_FOLDER = "C://temp//";
+    private static String UPLOADED_FOLDER = "/temp//";
 
     @GetMapping("/upload")
     public String index() {
@@ -39,13 +42,13 @@ public class UploadController {
             // Get the file and save it somewhere
     	    byte[] bytes = file.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+
             Files.write(path, bytes);
             
+
 			Header entrada = new Header();
 			String buffer = Header.preparaArquivo(path.toString());
-            
-
-            redirectAttributes.addFlashAttribute("message","Upload realizado com sucesso '" + entrada.getHeader(buffer) + "'");
+            redirectAttributes.addFlashAttribute("message","" + entrada.getHeader(buffer).replace("\r\n","<br/>"));
 
         } catch (IOException e) {
             e.printStackTrace();
