@@ -9,26 +9,11 @@ import java.io.UnsupportedEncodingException;
 
 public class Header {
 
-	private String tamanhoDoHeader;
-	private String versaoProtocolo;
-	private String codigoDeErro;
-	private String tratamentoEspecial;
-	private String usoFuturo;
-	private String chaveAssimetricaDestino;
-	private String algoritimoChaveSimetrica;
-	private String chaveAssimetricaLocal;
-	private String hash;
-	private String acCertificadoDestino;
-	private String numeroDeSerieDoDestino;
-	private String acCertificadoLocal;
-	private String numeroDeSerieDoLocal;
-	private String bufferCriptografiaChaveSimetrica;
-	private String bufferCriptogramaAuteticacaoMensagem;
-	
-	
+	private static BufferedInputStream entradaBuffer;
+
 	public static String preparaArquivo(String arquivo) throws IOException {	
 		InputStream entrada = new FileInputStream(arquivo);
-		BufferedInputStream entradaBuffer = new BufferedInputStream(entrada);
+		entradaBuffer = new BufferedInputStream(entrada);
 		ByteArrayOutputStream saidaBuffer = new ByteArrayOutputStream();
 		int x;
 		while((x = entradaBuffer.read()) != -1){
