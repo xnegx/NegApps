@@ -19,18 +19,18 @@ public class UploadController {
     //Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "/temp//";
 
-    @GetMapping("/upload")
+    @GetMapping("/header")
     public String index() {
-        return "upload";
+        return "header";
     }
 
-    @PostMapping("/upload") // //new annotation since 4.3
+    @PostMapping("/header") // //new annotation since 4.3
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
 
         if (file.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Por favor selecione um arquivo.");
-            return "redirect:uploadStatus";
+            redirectAttributes.addFlashAttribute("retorno", "Por favor selecione um arquivo.");
+            return "redirect:/header";
         }
 
         try {
@@ -44,13 +44,12 @@ public class UploadController {
 
 			Header entrada = new Header();
 			String buffer = Header.preparaArquivo(path.toString());
-            redirectAttributes.addFlashAttribute("message","" + entrada.getHeader(buffer).replace("\r\n","<br/>"));
-
+            redirectAttributes.addFlashAttribute("retorno","" + entrada.getHeader(buffer));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return "redirect:/uploadStatus";
+        return "redirect:/header";
     }
 
     @GetMapping("/uploadStatus")
