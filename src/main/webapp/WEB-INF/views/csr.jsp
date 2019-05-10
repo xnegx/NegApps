@@ -11,13 +11,13 @@
 		<main role="main">
 		<div class="row">
 			<div class="col-lg-6 align-content-center">
-				<h2>Selecione um arquivo</h2>
+				<h2>Selecione uma CSR ou Certificado para analisar</h2>
 				<p></p>
 				<form method="POST" action="/header" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="file">Escolha um arquivo </label> 
 						<input type="file" name="file" /><br/><br/>
-						<p class="form-text">Selecione um arquivo para analisar o header.</p>
+						<p class="form-text">Selecione um arquivo para analisar.</p>
 						<input type="submit" value="Enviar" />
 					</div>
 					
