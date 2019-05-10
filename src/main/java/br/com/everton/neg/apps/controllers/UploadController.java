@@ -26,7 +26,7 @@ public class UploadController {
         return "header";
     }
 
-    @PostMapping("/header") // //new annotation since 4.3
+    @PostMapping("/header") //
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
 
@@ -37,7 +37,7 @@ public class UploadController {
 
         try {
 
-            // Get the file and save it somewhere
+            // Pega o arquivo e salva em /tmp
     	    byte[] bytes = file.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
 
@@ -52,11 +52,6 @@ public class UploadController {
         }
 
         return "redirect:/header";
-    }
-
-    @GetMapping("/uploadStatus")
-    public String uploadStatus() {
-        return "uploadStatus";
     }
 
 }
