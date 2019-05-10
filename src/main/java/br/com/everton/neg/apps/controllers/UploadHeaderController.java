@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Controller
-public class UploadController {
+public class UploadHeaderController {
 
     //Salva o upload em uma pasta temporaria
 	// atencao no heroku , tem que usar tmp
